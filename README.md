@@ -11,14 +11,17 @@ npm i && bower i
 </code>
 
 ## Usage
-To run:
-
+### Running
 <code>
 grunt
 </code>
 
-
-To watch:
+### Watching
 <code>
 grunt watch
+</code>
+
+### Testing
+<code>
+karma start
 </code>
