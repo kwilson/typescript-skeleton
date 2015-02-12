@@ -1,4 +1,5 @@
-module TypeScriptSkeleton {
-    class App {
+module App {
+    export function start() {
+        alert("running");        
     }
 }

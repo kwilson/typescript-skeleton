@@ -1,12 +1,12 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-    typescript: {
-      base: {
+    ts: {
+      default: {
         src: ['app/**/*.ts'],
-        dest: '',
         options: {
-          module: 'amd', 
+          out: 'app/app.js',
+          module: 'commonjs', 
           target: 'es5',
           sourceMap: true,
           noImplicitAny: true,
@@ -26,15 +26,18 @@ module.exports = function(grunt) {
       js: ["app/**/*.js"]
     },
     watch: {
-      files: ['<%= typescript.base.src %>'],
-      tasks: ['default']
+      files: ['<%= ts.default.src %>'],
+      tasks: ['default'],
+      options: {
+        livereload: true,
+      }
     }
   });
 
-  grunt.loadNpmTasks('grunt-typescript');
+  grunt.loadNpmTasks("grunt-ts");
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('default', ['clean', 'typescript', 'uglify']);
+  grunt.registerTask('default', ['clean', 'ts', 'uglify']);
 };
