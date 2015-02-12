@@ -1,0 +1,4 @@
+module TypeScriptSkeleton {
+    class App {
+    }
+}
