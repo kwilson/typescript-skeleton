@@ -15,14 +15,26 @@ module.exports = function(grunt) {
         }
       }
     },
+    uglify: {
+      app: {
+        files: {
+          'app/app.min.js': ['app/**/*.js']
+        }
+      }
+    },
+    clean: {
+      js: ["app/**/*.js"]
+    },
     watch: {
       files: ['<%= typescript.base.src %>'],
-      tasks: ['typescript']
+      tasks: ['default']
     }
   });
 
   grunt.loadNpmTasks('grunt-typescript');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('default', ['typescript']);
+  grunt.registerTask('default', ['clean', 'typescript', 'uglify']);
 };
